@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import { View, Text, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-import { RoundedButton } from '../../components/RoundedButton'
-import { ImageButton } from '../../components/ImageButton';
+import { RoundedButton } from '../../../components/RoundedButton'
+import { ImageButton } from '../../../components/ImageButton';
 
 import styles from './Styles';
 import { StackScreenProps } from '@react-navigation/stack';
