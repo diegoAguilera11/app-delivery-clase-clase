@@ -6,6 +6,7 @@ import { RoundedButton } from '../../components/RoundedButton';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamsList } from '../../navigator/MainAppStack';
 import { ApiDelivery } from '../../../Data/sources/remote/api/ApiDelivery';
+import { Axios, AxiosError } from 'axios';
 
 
 interface Props extends StackScreenProps<RootStackParamsList, 'Login'> { }
@@ -15,19 +16,18 @@ const LoginScreen = ({ navigation, route }: Props) => {
   const sendBackend = async () => {
     try {
       // Realizamos nuestra peticion.
-
       const userData = {
         email: "diego@gmail.com",
-        password: "password1"
+        password: "passworddd"
       }
       const response = await ApiDelivery.post('auth/login', userData);
       console.log(response.data);
 
     } catch (error) {
-      console.log(error);
+      let e = (error as AxiosError);
+      console.log('ERROR: ', JSON.stringify(e.response?.data));
     }
   }
-
 
   return (
     <View style={styles.container}>
