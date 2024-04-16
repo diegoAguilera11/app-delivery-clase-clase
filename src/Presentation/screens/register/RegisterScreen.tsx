@@ -17,7 +17,7 @@ export const RegisterScreen = ({navigation, route}:Props) => {
         <View style={styles.container}>
             <Image
                 style={styles.imageBackground}
-                source={require('../../../assets/background.jpg')}
+                source={require('../../../../assets/background.jpg')}
             />
 
             <View style={{ top: '1%', left: '3%', position: 'absolute', marginTop: 35 }}>
@@ -35,7 +35,7 @@ export const RegisterScreen = ({navigation, route}:Props) => {
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Image
                             style={styles.logo}
-                            source={require('../../../assets/user.png')}
+                            source={require('../../../../assets/user.png')}
                         />
                         <Text style={styles.logoText}>Seleccione una imagen</Text>
                     </View>

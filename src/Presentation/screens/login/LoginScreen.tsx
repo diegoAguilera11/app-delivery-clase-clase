@@ -5,23 +5,41 @@ import styles from './Styles';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamsList } from '../../navigator/MainAppStack';
+import { ApiDelivery } from '../../../Data/sources/remote/api/ApiDelivery';
 
 
 interface Props extends StackScreenProps<RootStackParamsList, 'Login'> { }
 
 const LoginScreen = ({ navigation, route }: Props) => {
 
+  const sendBackend = async () => {
+    try {
+      // Realizamos nuestra peticion.
+
+      const userData = {
+        email: "diego@gmail.com",
+        password: "password1"
+      }
+      const response = await ApiDelivery.post('auth/login', userData);
+      console.log(response.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.imageBackground}
-        source={require('../../../assets/background.jpg')}
+        source={require('../../../../assets/background.jpg')}
       />
 
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
-          source={require('../../../assets/logo.png')}
+          source={require('../../../../assets/logo.png')}
         />
         <Text style={styles.logoText}>Vuelta al menú en 365 platos</Text>
       </View>
@@ -39,7 +57,7 @@ const LoginScreen = ({ navigation, route }: Props) => {
 
             <RoundedButton
               text='Ingresar'
-              onPress={() => console.log('Login')}
+              onPress={sendBackend}
             />
 
             <View style={styles.formLogin}>

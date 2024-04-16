@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../../screens/login/LoginScreen';
+import LoginScreen from '../screens/login/LoginScreen';
 import { RegisterScreen } from '../screens/register/RegisterScreen';
 
 export type RootStackParamsList = {
