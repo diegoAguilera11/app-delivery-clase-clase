@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// EMULATOR ANDROID URL = http://10.0.2.2
+import { HOST_LOCAL, HOST_EMULATOR } from '@env';
 
 const ApiDelivery = axios.create({
-    baseURL: 'http://localhost:8080/api/',
+    baseURL: HOST_EMULATOR,
     headers: {
         'Content-type': 'application/json'
     }

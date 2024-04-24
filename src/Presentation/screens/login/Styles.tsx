@@ -68,6 +68,23 @@ const Loginstyles = StyleSheet.create({
         fontWeight: 'bold',
         textTransform: 'uppercase',
         textAlign: 'center'
+    },
+    errorText: {
+        backgroundColor: '#ff7f7f',
+        borderLeftWidth: 3,
+        borderColor: '#993235',
+        color: 'white',
+        fontSize: 14,
+        fontWeight: '600',
+        marginVertical: 12,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+    },
+    errorsContainer: {
+        backgroundColor: '#ff7f7f',
+        borderRadius: 10,
+        marginTop: 10,
+        padding: 10,
     }
 });
 

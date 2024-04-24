@@ -25,8 +25,8 @@ export class AuthRepositoryImpl implements AuthRepository {
             const { data } = await ApiDelivery.post<ResponseAPIDelivery>('auth/login', { email, password });
             return Promise.resolve(data);
         } catch (error) {
-            let e = (error as AxiosError);
-            console.log('ERROR: ', JSON.stringify(e.response?.data));
+            let e = (error as AxiosError & ResponseAPIDelivery);
+            // console.log('ERROR: ', JSON.stringify(e.response?.data));
             return Promise.reject(e.response?.data);
         }
     }

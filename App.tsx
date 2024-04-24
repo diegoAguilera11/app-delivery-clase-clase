@@ -1,13 +1,17 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import LoginScreen from './src/screens/login/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { MainAppStack } from './src/Presentation/navigator/MainAppStack';
+import { View } from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MainAppStack />
+      <View style={{ flex: 1 }}>
+        <MainAppStack />
+        <FlashMessage position="bottom" />
+      </View>
     </NavigationContainer>
   );
 
