@@ -1,4 +1,4 @@
-# Frontend Mobile Delivery Semestre I 2024
+# Frontend Mobile Semestre I 2024
 ## Descripción del Proyecto
 Este es un proyecto en el cual se construye una aplicación móvil Delivery con el fin de comprender los aspectos fundamentales de Typescript, utilizando Expo Go y el patrón de diseño MVVM y Clean Architecture.
 
