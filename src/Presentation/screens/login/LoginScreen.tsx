@@ -1,26 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, TextInput, FlatList } from 'react-native'
 
 import styles from './Styles';
 import { RoundedButton } from '../../components/RoundedButton';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamsList } from '../../navigator/MainAppStack';
-import { ApiDelivery } from '../../../Data/sources/remote/api/ApiDelivery';
-import { Axios, AxiosError } from 'axios';
 import useViewModel from './ViewModel';
-
-interface Props extends StackScreenProps<RootStackParamsList, 'Login'> { }
+import { AuthContext } from '../../context/auth/AuthContext';
+interface Props extends StackScreenProps<RootStackParamsList, 'LoginScreen'> { }
 
 const LoginScreen = ({ navigation, route }: Props) => {
 
   const { email, password, onChange, login, errorMessages, errorsResponse } = useViewModel();
-
-  const handleLogin = async () => {
-    try {
-      await login();
-    } catch (error) {
-    }
-  }
 
   return (
     <View style={styles.container}>
@@ -114,14 +105,14 @@ const LoginScreen = ({ navigation, route }: Props) => {
           <View style={{ marginTop: 30 }}>
             <RoundedButton
               text='Ingresar'
-              onPress={handleLogin}
+              onPress={login}
             />
 
             <View style={styles.formLogin}>
               <Text style={{ fontWeight: '500' }}>No tienes cuenta?</Text>
               <TouchableOpacity
                 activeOpacity={0.6}
-                onPress={() => navigation.navigate('Register')}
+                onPress={() => navigation.navigate('RegisterScreen')}
               >
                 <Text style={styles.formRegisterText}>Registrate</Text>
               </TouchableOpacity>

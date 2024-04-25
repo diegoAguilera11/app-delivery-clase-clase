@@ -11,5 +11,5 @@ export interface User {
     confirmPassword: string;
     session_token?:  string;
     role_id?:        number;
-    address:         Address;
+    address?:         Address;
 }

@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { LoginAuthUseCase } from "../../../Domain/useCases/Auth/LoginAuth"
 import * as yup from 'yup';
 import { showMessage } from "react-native-flash-message";
 import { Error, ResponseAPIDelivery } from "../../../Data/sources/remote/api/models/ResponseAPIDelivery";
+import { AuthContext } from "../../context/auth/AuthContext";
+import { SaveUserUseCase } from "../../../Domain/useCases/UserLocal/SaveUserLocal";
 
 interface Values {
     email: string;
@@ -21,6 +23,8 @@ const validationLoginSchema = yup.object().shape({
 
 const LoginViewModel = () => {
 
+    const { auth } = useContext(AuthContext);
+
     const [values, setValues] = useState<Values>({
         email: '',
         password: ''
@@ -36,12 +40,15 @@ const LoginViewModel = () => {
 
     const login = async () => {
         const isValid = await isValidForm();
-        console.log(isValid);
         if (isValid) {
+            // Clear to previous error messages
+            setErrorMessages({});
             try {
                 const response = await LoginAuthUseCase(values.email, values.password);
                 if (response.success) {
-                    console.log(response.success);
+                    console.log(response.data);
+                    await SaveUserUseCase(response.data);
+                    auth(response.data);
                 }
             } catch (error) {
                 const rejectErrors: ResponseAPIDelivery = error;
