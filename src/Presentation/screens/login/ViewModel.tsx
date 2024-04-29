@@ -46,7 +46,6 @@ const LoginViewModel = () => {
             try {
                 const response = await LoginAuthUseCase(values.email, values.password);
                 if (response.success) {
-                    console.log(response.data);
                     await SaveUserUseCase(response.data);
                     auth(response.data);
                 }

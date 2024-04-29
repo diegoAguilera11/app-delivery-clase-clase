@@ -2,16 +2,27 @@
 import React, { useState } from 'react'
 import { View, Text, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-import { RoundedButton } from '../../../components/RoundedButton'
-import { ImageButton } from '../../../components/ImageButton';
-
-import styles from './Styles';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamsList } from '../../navigator/MainAppStack';
 
-interface Props extends StackScreenProps<RootStackParamsList, 'RegisterScreen'> {}
+import { RoundedButton } from '../../../components/RoundedButton'
+import { ImageButton } from '../../../components/ImageButton';
+import { ModalPickImage } from '../../components/ModalPickImage';
 
-export const RegisterScreen = ({navigation, route}:Props) => {
+
+import styles from './Styles';
+import useViewModel from './ViewModel';
+
+interface Props extends StackScreenProps<RootStackParamsList, 'RegisterScreen'> { }
+
+export const RegisterScreen = ({ navigation, route }: Props) => {
+
+    const { pickImage,
+        image,
+        takePhoto
+    } = useViewModel();
+
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     return (
         <View style={styles.container}>
@@ -29,16 +40,25 @@ export const RegisterScreen = ({navigation, route}:Props) => {
 
             <View style={styles.logoContainer}>
                 <TouchableOpacity
-                    onPress={() => console.log('Camara - Galería')}
+                    onPress={() => setModalVisible(true)}
                 >
 
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <Image
-                            style={styles.logo}
-                            source={require('../../../../assets/user.png')}
-                        />
-                        <Text style={styles.logoText}>Seleccione una imagen</Text>
-                    </View>
+                    {
+                        (image == '')
+                            ?
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                <Image
+                                    style={styles.logo}
+                                    source={require('../../../../assets/user.png')}
+                                />
+                                <Text style={styles.logoText}>Seleccione una imagen</Text>
+                            </View>
+                            :
+                            <Image
+                                style={styles.logo}
+                                source={{ uri: image }}
+                            />
+                    }
                 </TouchableOpacity>
             </View>
 
@@ -57,6 +77,12 @@ export const RegisterScreen = ({navigation, route}:Props) => {
                     </View>
                 </ScrollView>
             </View>
+            <ModalPickImage
+                modalUseState={modalVisible}
+                setModalUseState={setModalVisible}
+                openGallery={pickImage}
+                openCamera={takePhoto}
+            />
         </View>
     )
 }
