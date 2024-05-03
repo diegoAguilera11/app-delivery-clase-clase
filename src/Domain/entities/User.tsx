@@ -8,7 +8,7 @@ export interface User {
     email:           string;
     image?:          string;
     password:        string;
-    confirmPassword: string;
+    confirmPassword?: string;
     session_token?:  string;
     role_id?:        number;
     address?:         Address;

@@ -66,7 +66,6 @@ const LoginViewModel = () => {
 
                     // Filter array with msg and path
                     const errorsArrayFilter = errorsArray.map(({ msg, path }) => ({ value: msg, path }))
-                    console.log(errorsArrayFilter);
                     setErrorResponses(errorsArrayFilter);
 
                 }

@@ -6,7 +6,6 @@ import { RoundedButton } from '../../components/RoundedButton';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamsList } from '../../navigator/MainAppStack';
 import useViewModel from './ViewModel';
-import { AuthContext } from '../../context/auth/AuthContext';
 interface Props extends StackScreenProps<RootStackParamsList, 'LoginScreen'> { }
 
 const LoginScreen = ({ navigation, route }: Props) => {

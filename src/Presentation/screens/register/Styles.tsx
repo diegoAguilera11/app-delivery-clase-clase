@@ -23,7 +23,7 @@ const RegisterStyles = StyleSheet.create({
     },
     formText: {
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
     },
     formInput: {
         flexDirection: 'row',
@@ -80,6 +80,23 @@ const RegisterStyles = StyleSheet.create({
         bottom: 0,
         right: 0,
         left: 0,
+    },
+    errorText: {
+        backgroundColor: '#ff7f7f',
+        borderLeftWidth: 3,
+        borderColor: '#993235',
+        color: 'white',
+        fontSize: 14,
+        fontWeight: '600',
+        marginVertical: 12,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+    },
+    errorsContainer: {
+        backgroundColor: '#ff7f7f',
+        borderRadius: 10,
+        marginTop: 10,
+        padding: 10,
     }
 });
 

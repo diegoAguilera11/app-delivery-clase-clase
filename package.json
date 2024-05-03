@@ -19,7 +19,7 @@
     "expo": "~50.0.14",
     "expo-image-picker": "~14.7.1",
     "expo-status-bar": "~1.11.1",
-    "mime": "^4.0.1",
+    "mime": "^4.0.3",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-dotenv": "^3.4.11",
