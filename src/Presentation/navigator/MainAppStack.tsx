@@ -6,12 +6,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/auth/AuthContext';
 import LoadingScreen from '../screens/LoadingScreen';
 import { ClientBottomTabs } from './tabs/client/ClientBottomTabs';
+import ProfileUpdateScreen from '../screens/profile/update/ProfileUpdateScreen';
 
 export type RootStackParamsList = {
     LoginScreen: undefined,
     RegisterScreen: undefined,
     AdminBottomTabs: undefined,
     ClientBottomTabs: undefined
+    ProfileUpdateScreen: undefined,
 }
 
 
@@ -28,14 +30,15 @@ export const MainAppStack = () => {
             // This Client
             return <>
                 <Stack.Screen name="ClientBottomTabs" component={ClientBottomTabs} />
+                <Stack.Screen name="ProfileUpdateScreen" component={ProfileUpdateScreen} />
             </>
         } else if (user.role_id === 2) {
             // This Delivery
         } else {
             // This Admin
-
             return <>
                 <Stack.Screen name="AdminBottomTabs" component={AdminBottomTabs} />
+                <Stack.Screen name="ProfileUpdateScreen" component={ProfileUpdateScreen} />
             </>
         }
     }

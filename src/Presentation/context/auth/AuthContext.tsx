@@ -4,6 +4,7 @@ import { AuthState, authReducer } from "./authReducer";
 import { GetUserUseCase } from "../../../Domain/useCases/UserLocal/GetUserLocal";
 import { VerifyTokenUseCase } from "../../../Domain/useCases/UserLocal/VerifyTokenUserLocal";
 import { RemoveUserUseCase } from "../../../Domain/useCases/UserLocal/RemoveUserLocal";
+import { SaveUserUseCase } from "../../../Domain/useCases/UserLocal/SaveUserLocal";
 
 
 type AuthContextProps = {
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children }: any) => {
     }
 
     const updateUser = async (user: User) => {
-
+        await SaveUserUseCase(user);
         dispatch({ type: 'update-user', payload: { user } })
     }
 

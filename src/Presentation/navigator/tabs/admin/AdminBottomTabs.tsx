@@ -1,22 +1,29 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { FontAwesome } from '@expo/vector-icons';
+import { ProfileInfoScreen } from '../../../screens/profile/info/ProfileInfoScreen';
 
-import ProfileScreen from '../../../screens/profile/ProfileScreen';
+export type RootAdmingBottomTabParamsList = {
+    ProfileInfoScreen: undefined
+}
 
-const Tab = createBottomTabNavigator();
+
+const Tab = createBottomTabNavigator<RootAdmingBottomTabParamsList>();
 
 export const AdminBottomTabs = () => {
     return (
         <Tab.Navigator
-            initialRouteName='Profile'
+            initialRouteName='ProfileInfoScreen'
             screenOptions={{
                 headerShown: false,
+                tabBarActiveBackgroundColor: 'black', // Aquí defines el color negro
+                tabBarInactiveBackgroundColor: 'white', // Puedes definir el color de fondo para cuando la pestaña no está seleccionad
             }}
+
         >
             <Tab.Screen
-                name="Profile"
-                component={ProfileScreen}
+                name="ProfileInfoScreen"
+                component={ProfileInfoScreen}
                 options={{
                     title: 'Perfil',
                     tabBarIcon: ({ size, color }) => <FontAwesome name="user" size={size} color={color} />

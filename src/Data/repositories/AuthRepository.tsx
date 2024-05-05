@@ -2,11 +2,10 @@ import { AxiosError } from "axios";
 import { User } from "../../Domain/entities/User";
 import { AuthRepository } from "../../Domain/repositories/AuthRepository";
 import { ApiDelivery } from "../sources/remote/api/ApiDelivery";
-import { ResponseAPIDelivery } from "../sources/remote/api/models/ResponseAPIDelivery";
+import { ResponseAPIDelivery } from '../sources/remote/api/models/ResponseApiDelivery';
 
 export class AuthRepositoryImpl implements AuthRepository {
     async register(user: User): Promise<ResponseAPIDelivery> {
-        console.log(user)
         try {
             const { data } = await ApiDelivery.post<ResponseAPIDelivery>('auth/register', user);
             return Promise.resolve(data)
