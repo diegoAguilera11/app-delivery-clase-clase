@@ -1,5 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
-import { ResponseAPIDelivery } from '../../Data/sources/remote/api/models/ResponseAPIDelivery';
+import { ResponseAPIDelivery } from '../../Data/sources/remote/api/models/ResponseApiDelivery';
 
 
 export interface FileRepository {
