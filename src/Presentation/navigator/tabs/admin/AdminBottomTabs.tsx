@@ -3,12 +3,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ProfileInfoScreen } from '../../../screens/profile/info/ProfileInfoScreen';
 import { AdminCategoryNavigator } from './AdminCategoryNavigator';
 
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { PaymentCreateScreen } from '../../../screens/admin/payment/create/PaymentCreateScreen';
 
 
 export type RootAdmingBottomTabParamsList = {
     ProfileInfoScreen: undefined;
     AdminCategoryNavigator: undefined;
+    AdminPaymentScreen: undefined;
 }
 
 
@@ -31,6 +33,17 @@ export const AdminBottomTabs = () => {
                 options={{
                     tabBarShowLabel: false,
                     tabBarIcon: ({ size, color }) => <MaterialIcons name="category" size={size} color="white" />
+                }}
+            />
+
+            <Tab.Screen
+                name="AdminPaymentScreen"
+                component={PaymentCreateScreen}
+                options={{
+                    headerShown: true,
+                    headerTitle: 'Realizar pago',
+                    tabBarShowLabel: false,
+                    tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="cash" size={size} color="white" />
                 }}
             />
 
